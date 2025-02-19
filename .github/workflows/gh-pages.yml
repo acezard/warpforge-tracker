@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main
-      - 17-add-cicd
 
 permissions:
-  contents: write  # This gives the token push access
+  contents: write # This gives the token push access
 
 jobs:
   build-deploy:
@@ -18,11 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Node.js (if needed; adjust if using a different environment)
+      # Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.14.0'  # adjust as needed
+          node-version: "22.14.0"
 
       - name: Install Yarn
         run: npm install -g yarn
@@ -38,4 +37,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # change this to your build output folder
+          publish_dir: ./dist
