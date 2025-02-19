@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Table,
   TableBody,
@@ -8,8 +8,8 @@ import {
   TableRow,
   Paper,
   Typography,
-} from '@mui/material';
-import { Deck, Faction, Warlord } from '../models/types';
+} from "@mui/material";
+import { Deck, Faction, Warlord } from "../models/types";
 
 // Helper function to compute derived stats
 function getWarlordStats(w: Warlord) {
@@ -34,34 +34,34 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
         <Table size="small" aria-label="deck stats table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Faction
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Warlord
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Matches
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Off. Wins
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Off. Losses
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Def. Wins
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Def. Losses
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Total Wins
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Total Losses
               </TableCell>
-              <TableCell sx={{ backgroundColor: '#ccc', fontWeight: 'bold' }}>
+              <TableCell sx={{ backgroundColor: "#ccc", fontWeight: "bold" }}>
                 Win Rate
               </TableCell>
             </TableRow>
@@ -75,16 +75,18 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
                   getWarlordStats(warlord);
 
                 // Color-coded column styles
-                const offWinStyle = { backgroundColor: '#bfb' };
-                const offLossStyle = { backgroundColor: '#fbb' };
-                const defWinStyle = { backgroundColor: '#bfb' };
-                const defLossStyle = { backgroundColor: '#fbb' };
-                const totalWinStyle = { backgroundColor: '#dfd' };
-                const totalLossStyle = { backgroundColor: '#fdd' };
-                const rateStyle = { backgroundColor: '#eee' };
+                const offWinStyle = { backgroundColor: "#bfb" };
+                const offLossStyle = { backgroundColor: "#fbb" };
+                const defWinStyle = { backgroundColor: "#bfb" };
+                const defLossStyle = { backgroundColor: "#fbb" };
+                const totalWinStyle = { backgroundColor: "#dfd" };
+                const totalLossStyle = { backgroundColor: "#fdd" };
+                const rateStyle = { backgroundColor: "#eee" };
 
                 return (
-                  <TableRow key={`${faction.factionName}-${warlord.warlordName}`}>
+                  <TableRow
+                    key={`${faction.factionName}-${warlord.warlordName}`}
+                  >
                     {/* 
                       Only render the Faction cell for the first warlord in this faction 
                       so it spans multiple rows. 
@@ -93,9 +95,9 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
                       <TableCell
                         rowSpan={numberOfWarlords}
                         sx={{
-                          verticalAlign: 'top',
-                          backgroundColor: '#cce',
-                          fontWeight: 'bold',
+                          verticalAlign: "top",
+                          backgroundColor: "#cce",
+                          fontWeight: "bold",
                         }}
                       >
                         {faction.factionName}
@@ -103,7 +105,7 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
                     )}
 
                     {/* Warlord Name */}
-                    <TableCell sx={{ backgroundColor: '#eef' }}>
+                    <TableCell sx={{ backgroundColor: "#eef" }}>
                       {warlord.warlordName}
                     </TableCell>
 

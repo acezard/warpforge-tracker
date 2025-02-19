@@ -1,6 +1,6 @@
 // src/models/masterData.ts
 
-import { Faction } from './types';
+import { Faction } from "./types";
 
 export const MASTER_TABLE: Faction[] = [
   {

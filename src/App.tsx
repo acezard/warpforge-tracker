@@ -1,16 +1,16 @@
 // src/App.tsx
-import React, { useState } from 'react';
-import { Deck } from './models/types';
-import { deepCopyMasterTable } from './models/masterData';
-import DeckTab from './components/DeckTab';
-import { Container, Typography, Button, Box } from '@mui/material';
+import React, { useState } from "react";
+import { Deck } from "./models/types";
+import { deepCopyMasterTable } from "./models/masterData";
+import DeckTab from "./components/DeckTab";
+import { Container, Typography, Button, Box } from "@mui/material";
 
 const App: React.FC = () => {
   const [decks, setDecks] = useState<Deck[]>([]);
 
   const handleAddDeck = () => {
     const newDeck: Deck = {
-      deckName: 'New Deck',
+      deckName: "New Deck",
       factions: deepCopyMasterTable(),
     };
     setDecks([...decks, newDeck]);
