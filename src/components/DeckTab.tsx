@@ -10,7 +10,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import { Deck, Warlord } from "../models/types";
+import { Deck, Warlord, Faction } from "../models/types";
 
 // Helper function to compute derived stats
 function getWarlordStats(w: Warlord) {
@@ -66,60 +66,60 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {deck.factions.flatMap((faction) =>
-                faction.warlords.map((warlord: Warlord) => {
-                  const { matches, totalWins, totalLosses, winRate } =
-                    getWarlordStats(warlord);
+              {deck.factions.map((faction: Faction) => (
+                <React.Fragment key={faction.factionName}>
+                  <TableRow>
+                    <TableCell colSpan={9} sx={{ backgroundColor: "#ddd", fontWeight: "bold" }}>
+                      {faction.factionName}
+                    </TableCell>
+                  </TableRow>
+                  {faction.warlords.map((warlord: Warlord) => {
+                    const { matches, totalWins, totalLosses, winRate } = getWarlordStats(warlord);
 
-                  // Color-coded column styles
-                  const offWinStyle = { backgroundColor: "#bfb" };
-                  const offLossStyle = { backgroundColor: "#fbb" };
-                  const defWinStyle = { backgroundColor: "#bfb" };
-                  const defLossStyle = { backgroundColor: "#fbb" };
-                  const totalWinStyle = { backgroundColor: "#dfd" };
-                  const totalLossStyle = { backgroundColor: "#fdd" };
-                  const rateStyle = { backgroundColor: "#eee" };
+                    // Color-coded column styles
+                    const offWinStyle = { backgroundColor: "#bfb" };
+                    const offLossStyle = { backgroundColor: "#fbb" };
+                    const defWinStyle = { backgroundColor: "#bfb" };
+                    const defLossStyle = { backgroundColor: "#fbb" };
+                    const totalWinStyle = { backgroundColor: "#dfd" };
+                    const totalLossStyle = { backgroundColor: "#fdd" };
+                    const rateStyle = { backgroundColor: "#eee" };
 
-                  return (
-                    <TableRow key={warlord.warlordName}>
-                      {/* Warlord Name */}
-                      <TableCell sx={{ backgroundColor: "#eef" }}>
-                        {warlord.warlordName}
-                      </TableCell>
+                    return (
+                      <TableRow key={warlord.warlordName}>
+                        {/* Warlord Name */}
+                        <TableCell sx={{ backgroundColor: "#eef" }}>
+                          {warlord.warlordName}
+                        </TableCell>
 
-                      {/* Matches */}
-                      <TableCell>{matches}</TableCell>
+                        {/* Matches */}
+                        <TableCell>{matches}</TableCell>
 
-                      {/* Off. Wins */}
-                      <TableCell sx={offWinStyle}>{warlord.offWins}</TableCell>
+                        {/* Off. Wins */}
+                        <TableCell sx={offWinStyle}>{warlord.offWins}</TableCell>
 
-                      {/* Off. Losses */}
-                      <TableCell sx={offLossStyle}>
-                        {warlord.offLosses}
-                      </TableCell>
+                        {/* Off. Losses */}
+                        <TableCell sx={offLossStyle}>{warlord.offLosses}</TableCell>
 
-                      {/* Def. Wins */}
-                      <TableCell sx={defWinStyle}>{warlord.defWins}</TableCell>
+                        {/* Def. Wins */}
+                        <TableCell sx={defWinStyle}>{warlord.defWins}</TableCell>
 
-                      {/* Def. Losses */}
-                      <TableCell sx={defLossStyle}>
-                        {warlord.defLosses}
-                      </TableCell>
+                        {/* Def. Losses */}
+                        <TableCell sx={defLossStyle}>{warlord.defLosses}</TableCell>
 
-                      {/* Total Wins */}
-                      <TableCell sx={totalWinStyle}>{totalWins}</TableCell>
+                        {/* Total Wins */}
+                        <TableCell sx={totalWinStyle}>{totalWins}</TableCell>
 
-                      {/* Total Losses */}
-                      <TableCell sx={totalLossStyle}>{totalLosses}</TableCell>
+                        {/* Total Losses */}
+                        <TableCell sx={totalLossStyle}>{totalLosses}</TableCell>
 
-                      {/* Win Rate */}
-                      <TableCell sx={rateStyle}>
-                        {winRate.toFixed(1)}%
-                      </TableCell>
-                    </TableRow>
-                  );
-                })
-              )}
+                        {/* Win Rate */}
+                        <TableCell sx={rateStyle}>{winRate.toFixed(1)}%</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </React.Fragment>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
