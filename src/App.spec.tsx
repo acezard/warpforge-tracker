@@ -1,5 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
+import "@testing-library/jest-dom";
+
+window.prompt = jest.fn();
+window.localStorage.__proto__.getItem = jest.fn();
+window.localStorage.__proto__.setItem = jest.fn();
 
 test("renders", () => {
   render(<App />);
@@ -23,16 +28,16 @@ test("saves the deck to local storage", () => {
   fireEvent.click(addButton);
   expect(localStorage.setItem).toHaveBeenCalledWith(
     "decks",
-    JSON.stringify([{ deckName: "Saved Deck", factions: expect.any(Array) }])
+    JSON.stringify([{ deckName: "Saved Deck", factions: expect.any(Array) }]),
   );
   promptSpy.mockRestore();
 });
 
 test("loads decks from local storage on component mount", () => {
-  const savedDecks = [
-    { deckName: "Loaded Deck", factions: [] },
-  ];
-  jest.spyOn(localStorage, "getItem").mockReturnValue(JSON.stringify(savedDecks));
+  const savedDecks = [{ deckName: "Loaded Deck", factions: [] }];
+  jest
+    .spyOn(localStorage, "getItem")
+    .mockReturnValue(JSON.stringify(savedDecks));
   render(<App />);
   expect(screen.getByText("Loaded Deck")).toBeInTheDocument();
 });
@@ -42,7 +47,9 @@ test("shows only one deck per tab", () => {
     { deckName: "Deck 1", factions: [] },
     { deckName: "Deck 2", factions: [] },
   ];
-  jest.spyOn(localStorage, "getItem").mockReturnValue(JSON.stringify(savedDecks));
+  jest
+    .spyOn(localStorage, "getItem")
+    .mockReturnValue(JSON.stringify(savedDecks));
   render(<App />);
   expect(screen.getByText("Deck 1")).toBeInTheDocument();
   expect(screen.getByText("Deck 2")).toBeInTheDocument();

@@ -69,12 +69,16 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
               {deck.factions.map((faction: Faction) => (
                 <React.Fragment key={faction.factionName}>
                   <TableRow>
-                    <TableCell colSpan={9} sx={{ backgroundColor: "#ddd", fontWeight: "bold" }}>
+                    <TableCell
+                      colSpan={9}
+                      sx={{ backgroundColor: "#ddd", fontWeight: "bold" }}
+                    >
                       {faction.factionName}
                     </TableCell>
                   </TableRow>
                   {faction.warlords.map((warlord: Warlord) => {
-                    const { matches, totalWins, totalLosses, winRate } = getWarlordStats(warlord);
+                    const { matches, totalWins, totalLosses, winRate } =
+                      getWarlordStats(warlord);
 
                     // Color-coded column styles
                     const offWinStyle = { backgroundColor: "#bfb" };
@@ -96,16 +100,24 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
                         <TableCell>{matches}</TableCell>
 
                         {/* Off. Wins */}
-                        <TableCell sx={offWinStyle}>{warlord.offWins}</TableCell>
+                        <TableCell sx={offWinStyle}>
+                          {warlord.offWins}
+                        </TableCell>
 
                         {/* Off. Losses */}
-                        <TableCell sx={offLossStyle}>{warlord.offLosses}</TableCell>
+                        <TableCell sx={offLossStyle}>
+                          {warlord.offLosses}
+                        </TableCell>
 
                         {/* Def. Wins */}
-                        <TableCell sx={defWinStyle}>{warlord.defWins}</TableCell>
+                        <TableCell sx={defWinStyle}>
+                          {warlord.defWins}
+                        </TableCell>
 
                         {/* Def. Losses */}
-                        <TableCell sx={defLossStyle}>{warlord.defLosses}</TableCell>
+                        <TableCell sx={defLossStyle}>
+                          {warlord.defLosses}
+                        </TableCell>
 
                         {/* Total Wins */}
                         <TableCell sx={totalWinStyle}>{totalWins}</TableCell>
@@ -114,7 +126,9 @@ const DeckTab: React.FC<DeckTabProps> = ({ deck }) => {
                         <TableCell sx={totalLossStyle}>{totalLosses}</TableCell>
 
                         {/* Win Rate */}
-                        <TableCell sx={rateStyle}>{winRate.toFixed(1)}%</TableCell>
+                        <TableCell sx={rateStyle}>
+                          {winRate.toFixed(1)}%
+                        </TableCell>
                       </TableRow>
                     );
                   })}
