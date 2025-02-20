@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
+    "ci:check": "yarn typecheck && yarn lint && yarn format:check && yarn test",
     "dev": "vite",
     "format:write": "prettier --write .",
     "format:check": "prettier --check .",
