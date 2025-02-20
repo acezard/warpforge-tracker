@@ -1,50 +1,74 @@
-# React + TypeScript + Vite
+# Warpforge Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Warpforge Tracker is a web application designed to help players track their deck performance in the game Warpforge. The application allows users to create multiple decks, log wins and losses, and view detailed statistics for each deck.
 
-Currently, two official plugins are available:
+## Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The purpose of Warpforge Tracker is to provide players with a convenient way to monitor their deck performance, analyze their win/loss ratios, and make informed decisions to improve their gameplay.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Create and manage multiple decks
+- Log wins and losses for each deck
+- View detailed statistics for each deck, including win/loss ratios and match history
+- Export and import deck data
+- User-friendly interface with intuitive navigation
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+### Prerequisites
+
+- Node.js (v22.14.0)
+- Yarn package manager
+
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/acezard/warpforge-tracker.git
+cd warpforge-tracker
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
+```sh
+yarn install
 ```
+
+### Running the Project
+
+To start the development server:
+
+```sh
+yarn dev
+```
+
+### Building the Project
+
+To build the project for production:
+
+```sh
+yarn build
+```
+
+### Running Tests
+
+To run the tests:
+
+```sh
+yarn test
+```
+
+## Contribution Guidelines
+
+We welcome contributions from the community! Please follow these guidelines when contributing to the project:
+
+1. Fork the repository and create a new branch for your feature or bugfix.
+2. Write clear and concise commit messages.
+3. Ensure that your code follows the project's coding standards and passes all tests.
+4. Submit a pull request with a detailed description of your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
