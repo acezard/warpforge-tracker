@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Deck } from "./models/types";
 import { deepCopyMasterTable } from "./models/masterData";
 import DeckTab from "./components/DeckTab";
-import { Container, Typography, Button, Box } from "@mui/material";
+import { Container, Typography, Button, Box, Tabs, Tab } from "@mui/material";
 
 const App: React.FC = () => {
   const [decks, setDecks] = useState<Deck[]>([]);
+  const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
     const savedDecks = localStorage.getItem("decks");
@@ -25,6 +26,10 @@ const App: React.FC = () => {
     localStorage.setItem("decks", JSON.stringify(updatedDecks));
   };
 
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSelectedTab(newValue);
+  };
+
   return (
     <Container maxWidth={false}>
       <Typography variant="h4" gutterBottom>
@@ -34,9 +39,23 @@ const App: React.FC = () => {
         Add New Deck
       </Button>
 
+      <Tabs value={selectedTab} onChange={handleChange} aria-label="deck tabs">
+        {decks.map((deck, index) => (
+          <Tab key={index} label={deck.deckName} />
+        ))}
+      </Tabs>
+
       <Box>
         {decks.map((deck, index) => (
-          <DeckTab key={index} deck={deck} />
+          <div
+            role="tabpanel"
+            hidden={selectedTab !== index}
+            id={`tabpanel-${index}`}
+            aria-labelledby={`tab-${index}`}
+            key={index}
+          >
+            {selectedTab === index && <DeckTab deck={deck} />}
+          </div>
         ))}
       </Box>
     </Container>

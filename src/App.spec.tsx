@@ -36,3 +36,18 @@ test("loads decks from local storage on component mount", () => {
   render(<App />);
   expect(screen.getByText("Loaded Deck")).toBeInTheDocument();
 });
+
+test("shows only one deck per tab", () => {
+  const savedDecks = [
+    { deckName: "Deck 1", factions: [] },
+    { deckName: "Deck 2", factions: [] },
+  ];
+  jest.spyOn(localStorage, "getItem").mockReturnValue(JSON.stringify(savedDecks));
+  render(<App />);
+  expect(screen.getByText("Deck 1")).toBeInTheDocument();
+  expect(screen.getByText("Deck 2")).toBeInTheDocument();
+  const tab1 = screen.getByRole("tabpanel", { hidden: true, name: "Deck 1" });
+  const tab2 = screen.getByRole("tabpanel", { hidden: true, name: "Deck 2" });
+  expect(tab1).toBeInTheDocument();
+  expect(tab2).toBeInTheDocument();
+});
